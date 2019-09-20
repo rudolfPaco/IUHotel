@@ -40,6 +40,7 @@ public class IUBoton extends JComponent{
     private Color colorBorde = new Color(170, 170, 170);
     
     private MouseAdapter eventoRaton;
+    private boolean subrayado;
     
     /**
      * Interfaz de Usuario Boton Image y Texto, que hereda del JComponent, tiene un color degradado y un borde redondeado, los cuales es posible modificar la forma y el color del boton.
@@ -50,6 +51,7 @@ public class IUBoton extends JComponent{
         this.texto = texto;
         this.limitacion = limitacion;
         this.estaEncimaBoton = false;        
+        this.subrayado = false;
         
         construirBoton();
         escucharEventos();
@@ -88,7 +90,15 @@ public class IUBoton extends JComponent{
         g2.setColor( colorBorde );
         g2.drawRoundRect(0, 0, getWidth( ) - 1, getHeight() - 1, arco, arco);
 
+        if(subrayado){
+            g2.setColor(new Color(120, 0, 0));
+            g2.drawLine(limitacion.getPorcentajeAncho(10), limitacion.getPorcentajeAlto(80), limitacion.getPorcentajeAncho(90), limitacion.getPorcentajeAlto(80));            
+        }else{
+            g2.drawLine(0, 0, 0, 0);
+        }
+        
         g2.setStroke(new BasicStroke(resaltador));
+        
     }
     private void escucharEventos(){
         eventoRaton = new MouseAdapter() {
@@ -150,5 +160,9 @@ public class IUBoton extends JComponent{
     public void addEventoRaton(MouseAdapter evento){
         addMouseListener(evento);
         iuTexto.addMouseListener(evento);
+    }
+    public void setSubrayado(boolean subrayado){
+        this.subrayado = subrayado;
+        repaint();
     }
 }
