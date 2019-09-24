@@ -87,7 +87,7 @@ public final class Digitalizacion extends Applet implements ScannerListener {
             documento = new Archivo(nombreImagen, archivo_imagen.getAbsolutePath(), tipoDocumento, imagen);
             */
             estado = true;
-            //iuRetrato.setUrlImagen(documento.getUrlDocumento());            
+            //iuRetrato.setUrlImagen(documento.getUrlDocumento());              
             iuRetrato.setBuffered(imagen);
             try{
                 new uk.co.mmscomputing.concurrent.Semaphore(0,true).tryAcquire(2000,null);

@@ -20,6 +20,7 @@ public class IUEtiquetaI extends JLabel{
     private String urlImagen;
     private Limitacion limitacion;
     private BufferedImage buffered;
+    private Object objeto;
         
     /**
      * Interfaz de Usuario Etiqueta Imagen, hereda atributos y metodos del componente JLabel.
@@ -30,6 +31,7 @@ public class IUEtiquetaI extends JLabel{
         this.urlImagen = urlImagen;
         this.limitacion = limitacion;
         this.buffered = null;
+        this.objeto = null;
         construirEtiqueta();        
     }
     private void construirEtiqueta(){
@@ -70,5 +72,11 @@ public class IUEtiquetaI extends JLabel{
     }
     public void setBuffered(BufferedImage buffered) {
         this.buffered = buffered;        
+    }
+    public Object getObjeto() {
+        return objeto;
+    }
+    public void setObjeto(Object objeto) {
+        this.objeto = objeto;
     }
 }
