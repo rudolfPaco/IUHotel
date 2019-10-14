@@ -193,12 +193,11 @@ public class Hora {
      * @return AM si y solo si la hora establecida se encuentra en el tiempo mañanero caso contrario devuelve: PM si la hora establecida se encuentra en el tiempo tarde o noche.
      */
     public String getFormato(){
-        Date fechaDate = new Fecha("YYYY-MM-dd").getDate(new Fecha().getFecha());
+        Date fechaDate = new Fecha(new Fecha().fecha()+" "+horero+":"+minutero+":"+segundero).getDate();
         Calendar calendarioFechaDate = new GregorianCalendar();
-        calendarioFechaDate.setTime(fechaDate);
+        calendarioFechaDate.setTime(fechaDate);        
         
-        //calendarioFechaDate.get(Calendar.AM_PM)==Calendar.AM?"AM":"PM";
-        return Calendar.getInstance().get(Calendar.AM_PM)==Calendar.AM?"AM":"PM";
+        return calendarioFechaDate.get(Calendar.AM_PM)==Calendar.AM?"AM":"PM";
     }
     private double redondear( double numero, int decimales ) {
         return Math.round(numero*Math.pow(10,decimales))/Math.pow(10,decimales);
